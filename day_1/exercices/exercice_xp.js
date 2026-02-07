@@ -1,105 +1,207 @@
-//=========== Exercice 1
+// ===== Exercise 1
+// #1
+function funcOne() {
+    let a = 5;
+    if (a > 1) a = 3;
+    alert(a); // 3
+}
 
-const person = {
-    name: 'John Doe',
-    age: 25,
-    location: {
-        country: 'Canada',
-        city: 'Vancouver',
-        coordinates: [49.2827, -123.1207]
+// #1.2 - With const, would throw error if reassigned
+
+// #2
+let a = 0;
+function funcTwo() {
+    a = 5;
+}
+function funcThree() {
+    alert(a);
+}
+// Console run: funcThree() -> 0, funcTwo(), funcThree() -> 5
+// With const, funcTwo() would throw error
+
+// #3
+function funcFour() {
+    window.a = "hello";
+}
+function funcFive() {
+    alert(a); // "hello"
+}
+
+// #4
+let a4 = 1;
+function funcSix() {
+    let a = "test";
+    alert(a); // "test"
+}
+// With const instead of let: works same
+
+// #5
+let a5 = 2;
+if (true) {
+    let a = 5;
+    alert(a); // 5
+}
+alert(a5); // 2
+// With const instead of let: same behavior
+
+
+// ===== Exercise 2
+const winBattle = () => true;
+
+const experiencePoints = winBattle() ? 10 : 1;
+
+console.log(experiencePoints);
+
+// ===== Exercise 3
+const isString = (value) => typeof value === 'string';
+
+console.log(isString('hello'));
+console.log(isString([1, 2, 4, 0]));
+// ===== Exercise 4
+
+const sum = (a, b) => a + b;
+
+console.log(sum(5, 3));
+console.log(sum(10, 20));
+
+// ===== Exercise 5
+
+function kgToGram1(kg) {
+    return kg * 1000
+}
+console.log(kgToGram1(5));
+
+const kgToGram2 = function (kg) {
+    return kg * 1000
+}
+console.log(kgToGram2(7))
+
+
+// 3 - Difference between function declaration and expression:
+// Function declarations are hoisted, function expressions are not.
+
+const kgToGram3 = kg => kg * 1000
+console.log(kgToGram3(2))
+
+    // ===== Exercise 6
+
+    (function (numChildren, partnerName, geoLocation, job) {
+        const info = `You will be a ${job} in ${geoLocation}, and married to ${partnerName} with ${numChildren} kids.`;
+        document.getElementById('id').innerText = info
+    })(0, "ouma", "casablanca", "Web Developer")
+
+    // ===== Exercise 7
+
+    // html exercice 7
+    // <!DOCTYPE html>
+    // <html lang="en">
+
+    // <head>
+    //     <meta charset="UTF-8">
+    //     <title>Navbar Welcome</title>
+    //     <style>
+    //         nav {
+    //             display: flex;
+    //             justify-content: flex-end;
+    //             align-items: center;
+    //             background-color: #333;
+    //             padding: 10px 20px;
+    //             color: white;
+    //             font-family: Arial, sans-serif;
+    //         }
+
+    //         .user-info {
+    //             display: flex;
+    //             align-items: center;
+    //             gap: 10px;
+    //             background-color: #444;
+    //             padding: 5px 10px;
+    //             border-radius: 5px;
+    //         }
+
+    //         .user-info img {
+    //             width: 40px;
+    //             height: 40px;
+    //             border-radius: 50%;
+    //         }
+    //     </style>
+    // </head>
+
+    // <body>
+    //     <nav id="navbar">
+    //         <h1>My Website</h1>
+    //     </nav>
+
+    //     <script src="exercises_xp.js"></script>
+    // </body>
+
+    // </html>
+
+    (function (userName) {
+        const navBar = document.getElementById("navbar")
+        const userDiv = document.createElement('div')
+        userDiv.className = "user-info"
+
+        const profile = document.createElement('img')
+        profile.src = 'https://via.placeholder.com/40'
+
+
+        const nameSpan = document.createElement('span')
+        nameSpan.innerText = userName
+
+        userDiv.appendChild(profile)
+        userDiv.appendChild(nameSpan)
+
+        navBar.appendChild(userDiv)
+
+    })('walid')
+
+
+// ===== Exercise 8
+// html exercice 8
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//   <meta charset="UTF-8">
+//   <title>Juice Bar Complete</title>
+//   <style>
+//     body {
+//       font-family: Arial, sans-serif;
+//       padding: 20px;
+//     }
+//     #order {
+//       margin-top: 20px;
+//       font-size: 18px;
+//       color: #333;
+//     }
+//   </style>
+// </head>
+// <body>
+//   <h1>Welcome to the Juice Bar!</h1>
+//   <div id="order"></div>
+
+//   <script src="exercises_xp.js"></script>
+// </body>
+// </html>
+
+
+function makeJuice(size) {
+    let ingredients = []
+
+    function addIngredients(ing1, ing2, ing3) {
+        ingredients.push(ing1, ing2, ing3)
     }
-}
 
-const { name, location: { country, city, coordinates: [lat, lng] } } = person;
-
-console.log(`I am ${name} from ${city}, ${country}. Latitude(${lat}), Longitude(${lng})`);
-
-// output 
-// I am John Doe from Vancouver, Canada. Latitude(49.2827), Longitude(-123.1207)
-
-// ========== Exercice 2
-
-function displayStudentInfo(objUser) {
-    const { first, last } = objUser;
-
-    return `Your full name is ${first} ${last}`;
-}
-
-console.log(displayStudentInfo({ first: 'Elie', last: 'Schoppik' }));
-
-
-// ========== Exercice 3
-
-// part 1
-const users = { user1: 18273, user2: 92833, user3: 90315 };
-const usersArray = Object.entries(users);
-console.log(usersArray);
-
-const users2 = { user1: 18273, user2: 92833, user3: 90315 };
-const usersArray2 = Object.entries(users).map(([user, id]) => {
-    return [user, id * 2];
-});
-console.log(usersArray2)
-
-
-// ========== Exercice 4
-
-class Person {
-    constructor(name) {
-        this.name = name;
+    function displayJuice() {
+        const message = `The client wants a ${size} juice, containing ${ingredients.join(', ')}.`;
+        document.getElementById('order').textContent = message;
     }
+
+
+    addIngredients('apple', 'banana', 'carrot');
+    addIngredients('orange', 'strawberry', 'mango');
+
+    displayJuice();
 }
 
-const member = new Person('John');
-console.log(typeof member);
-
-// output
-// object
-
-// ======== Exercice 5
-
-class Labrador extends Dog {
-  constructor(name, size) {
-    super(name);
-    this.size = size;
-  }
-}
-
-// ====== Exercice 6
-
-
-// [2] === [2] false
-// {} === {} false 
-
-
-
-const object1 = { number: 5 }; 
-const object2 = object1; 
-const object3 = object2; 
-const object4 = { number: 5 };
-
-object1.number = 4;
-
-console.log(object2.number); // 4
-console.log(object3.number); // 4
-console.log(object4.number); // 5
-
-
-class Animal {
-  constructor(name, type, color) {
-    this.name = name;
-    this.type = type;
-    this.color = color;
-  }
-}
-
-class Mammal extends Animal {
-  sound(sound) {
-    return `${sound} I'm a ${this.type}, named ${this.name} and I'm ${this.color}`;
-  }
-}
-
-const farmerCow = new Mammal("Lily", "cow", "brown and white");
-
-console.log(farmerCow.sound("Moooo"));
-
+makeJuice('large');
