@@ -1,16 +1,11 @@
-class Bird {
-  constructor() {
-    console.log("I'm a bird. 🦢");
-  }
-}
+// ===== Exercise 1
+const mergeWords = (word) => {
+  return (nextWord) =>
+    nextWord === undefined
+      ? word
+      : mergeWords(word + ' ' + nextWord);
+};
 
-class Flamingo extends Bird {
-  constructor() {
-    console.log("I'm pink. 🌸");
-    super();
-  }
-}
-
-const pet = new Flamingo();
-
-//  ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+console.log(mergeWords('Hello')());
+console.log(mergeWords('There')('is')('no')('spoon.')());
+console.log(mergeWords('JavaScript')('is')('fun!')()); 
