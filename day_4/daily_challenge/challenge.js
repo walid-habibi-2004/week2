@@ -43,3 +43,14 @@ form.addEventListener('submit', function (e) {
 
     output.textContent = JSON.stringify(data); // Display JSON in <pre>
 });
+
+
+// ===========> Challenge 2:
+
+function allTruthy(...args) {
+  return args.every(value => Boolean(value));
+}
+
+console.log(allTruthy(true, true, true));
+console.log(allTruthy(true, false, true));
+console.log(allTruthy(5, 4, 3, 2, 1, 0));
