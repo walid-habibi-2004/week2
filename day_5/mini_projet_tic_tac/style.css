@@ -1,1 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #3f8edb;
+    color: white;
+}
 
+h1 {
+    margin-top: 20px;
+}
+
+.board {
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.cell {
+    border: 3px solid #222;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#restart {
+    display: none;
+    margin-top: 15px;
+}
